@@ -1,0 +1,244 @@
+{% extends 'base.html' %}
+
+
+
+{% block container %}
+
+<script type="text/javascript">
+    function wonder1(wid1){
+        return document.getElementById('wonderid').value  = wid1;
+    }
+    function wonder1A(wondernote){
+        return document.getElementById('wondernote').value  = wondernote;
+    }
+    function wonder2(wxdate){
+        return document.getElementById('bank22').innerHTML  =
+            '<label class="btn btn-sm " style="background:SeaGreen;color:snow;">' + wxdate + '</label>';
+    }
+    function wonder3(wnote){
+        return document.getElementById('bank23').innerHTML  =
+            '<label class="btn btn-sm " style="background:SeaGreen;color:snow;">' + wnote + '</label>';
+    }
+    function wonder4(){
+        return document.getElementById('wonderid').value  = wondernote;
+    }
+
+    function redog0(dogid1){
+        return document.getElementById('dogid').value  = dogid1;
+    }
+    function redog0A(dogitemname){
+        return document.getElementById('dogitemname').value  = dogitemname;
+    }
+    function receipt1(rydate){
+        return document.getElementById('dog-1').innerHTML  =
+            '<label class="btn btn-sm " style="background:SteelBlue;color:snow;">' + rydate + '</label>';
+    }
+    function receipt2(ritemname){
+        return document.getElementById('dog-2').innerHTML  =
+            '<label class="btn btn-sm " style="background:SteelBlue;color:snow;">' + ritemname + '</label>';
+    }
+    function receipt3(rshop){
+        return document.getElementById('dog-3').innerHTML  =
+            '<label class="btn btn-sm " style="background:SteelBlue;color:snow;">' + rshop + '</label>';
+    }
+    function receipt4(rprice){
+        return document.getElementById('dog-4').innerHTML  =
+            '<label class="btn btn-sm " style="background:SteelBlue;color:snow;">' + rprice + '</label>';
+    }
+    function recat0(catid1){
+        return document.getElementById('catid').value  = catid1;
+    }
+    function recat0A(catitemname){
+        return document.getElementById('catitemname').value  = catitemname;
+    }
+    function recat1(cydate){
+        return document.getElementById('cat-1').innerHTML  =
+            '<label class="btn btn-sm " style="background:RoyalBlue;color:snow;">' + cydate + '</label>';
+    }
+    function recat2(citemname){
+        return document.getElementById('cat-2').innerHTML  =
+            '<label class="btn btn-sm " style="background:RoyalBlue;color:snow;">' + citemname + '</label>';
+    }
+    function recat3(cshop){
+        return document.getElementById('cat-3').innerHTML  =
+            '<label class="btn btn-sm " style="background:RoyalBlue;color:snow;">' + cshop + '</label>';
+    }
+    function recat4(cprice){
+        return document.getElementById('cat-4').innerHTML  =
+            '<label class="btn btn-sm " style="background:RoyalBlue;color:snow;">' + cprice + '</label>';
+    }
+    function reegg0(eggid1){
+        return document.getElementById('eggid').value  = eggid1;
+    }
+    function reegg0A(eggitemname){
+        return document.getElementById('eggitemname').value  = eggitemname;
+    }
+    function reegg1(eydate){
+        return document.getElementById('egg-1').innerHTML  =
+            '<label class="btn btn-sm " style="background:SlateBlue;color:snow;">' + eydate + '</label>';
+    }
+    function reegg2(eitemname){
+        return document.getElementById('egg-2').innerHTML  =
+            '<label class="btn btn-sm " style="background:SlateBlue;color:snow;">' + eitemname + '</label>';
+    }
+    function reegg3(eshop){
+        return document.getElementById('egg-3').innerHTML  =
+            '<label class="btn btn-sm " style="background:SlateBlue;color:snow;">' + eshop + '</label>';
+    }
+    function reegg4(eprice){
+        return document.getElementById('egg-4').innerHTML  =
+            '<label class="btn btn-sm " style="background:SlateBlue;color:snow;">' + eprice + '</label>';
+    }
+
+</script>
+
+    <form action="" method="post">
+    {% csrf_token %}
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col">
+                    <label id="bank22"></label>
+                    <label id="bank23"></label>
+                    <label id="dog-1"></label>
+                    <label id="dog-2"></label>
+                    <label id="dog-3"></label>
+                    <label id="dog-4"></label>
+                    <label id="cat-1"></label>
+                    <label id="cat-2"></label>
+                    <label id="cat-3"></label>
+                    <label id="cat-4"></label>
+                    <label id="egg-1"></label>
+                    <label id="egg-2"></label>
+                    <label id="egg-3"></label>
+                    <label id="egg-4"></label>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-sm">
+                    <input type="hidden" name="wonderid" id="wonderid">
+                    <input type="hidden" name="wondernote" id="wondernote">
+                    <input type="hidden" name="dogid" id="dogid">
+                    <input type="hidden" name="dogitemname" id="dogitemname">
+                    <input type="hidden" name="catid" id="catid">
+                    <input type="hidden" name="catitemname" id="catitemname">
+                    <input type="hidden" name="eggid" id="eggid">
+                    <input type="hidden" name="eggitemname" id="eggitemname">
+                    <input type="submit" class="btn btn-danger" value="送出">
+                </div>
+            </div>
+        </div>
+    </form>
+{#        ------------------------------------------------------#}
+
+<div class="container-fluid">
+    <div class="row">
+    <div class="col-sm-5">
+    <div class="card">
+        <div class="card-header card-secondary">評估列表</div>
+        <div class="card-body ">
+            <table class="table table-bordered table-hover table-striped" cellspacing="0" width="50%">
+              <thead class="table-dark">
+                <tr>
+                  <td>評估日期</td>
+                  <td>項目名稱</td>
+                  <td>要求來源</td>
+                  <td>價錢區間</td>
+                </tr>
+
+
+              </thead>
+              <tbody>
+              {% for wonder in wonder_list %}
+                <tr>
+                  <td width="20%">
+                      <button class="btn
+                      {% if wonder.twinbirdx_id is None %}
+                          btn-success
+                      {% else %}
+                          btn-secondary disabled
+                      {% endif %}
+                      btn-sm " id="wonder{{ wonder.id }}"
+                              onclick="wonder1('{{ wonder.id }}');wonder1A('{{ wonder.note }}');wonder2('{{ wonder.xdate }}');wonder3('{{ wonder.note }}');">
+                          {{ wonder.xdate|date:"Y-m-d" }}</button></td>
+                  <td>{{ wonder.note }}</td>
+                  <td>{{ wonder.source }}</td>
+                  <td>{{ wonder.xrange }}</td>
+                </tr>
+              {% endfor %}
+
+
+              </tbody>
+
+            </table>
+        </div><!-- div class="card-body " -->
+    </div> <!--  div class="card" -->
+    </div><!-- div class="col" -->
+{#    ---------------------------------------#}
+    <div class="col-sm-7">
+    <div class="card">
+        <div class="card-header card-secondary">收據列表</div>
+        <div class="card-body ">
+            <table class="table table-bordered table-hover table-striped" cellspacing="0" width="50%">
+              <thead class="table-dark">
+                <tr>
+                  <td>收據日期</td>
+                  <td>項目名稱</td>
+                  <td>收據號碼</td>
+                  <td>店家名稱</td>
+                  <td>價錢</td>
+                </tr>
+
+
+              </thead>
+              <tbody>
+              {% for receipt in receipt_list %}
+                <tr>
+                  <td width="15%">
+                      <button class="btn
+                      {% if receipt.twinbirdy_id is None %}
+                          btn-warning
+                      {% else %}
+                          btn-secondary disabled
+                      {% endif %}
+                      btn-sm"
+                      onclick="redog0('{{ receipt.id }}');redog0A('{{ receipt.itemname }}');receipt1('{{ receipt.ydate }}');
+                      receipt2('{{ receipt.itemname }}');
+                      receipt3('{{ receipt.shop }}');receipt4('{{ receipt.price }}');">
+                      {{ receipt.ydate|date:"Y-m-d" }}</button></td>
+                  <td>{{ receipt.itemname }}</td>
+                  <td>{{ receipt.code }}</td>
+                  <td><button class="btn
+                      {% if receipt.twinbirdy_id is None %}
+                          btn-outline-dark
+                      {% else %}
+                          btn-outline-secondary disabled
+                      {% endif %}
+                   btn-sm"
+                      onclick="recat0('{{ receipt.id }}');recat0A('{{ receipt.itemname }}');recat1('{{ receipt.ydate }}');recat2('{{ receipt.itemname }}');
+                      recat3('{{ receipt.shop }}');recat4('{{ receipt.price }}');">{{ receipt.shop }}</button></td>
+                  <td><button class="btn
+                      {% if receipt.twinbirdy_id is None %}
+                          btn-outline-dark
+                      {% else %}
+                          btn-outline-secondary disabled
+                      {% endif %}
+                   btn-sm"
+                      onclick="reegg0('{{ receipt.id }}');reegg0A('{{ receipt.itemname }}');reegg1('{{ receipt.ydate }}');reegg2('{{ receipt.itemname }}');
+                      reegg3('{{ receipt.shop }}');reegg4('{{ receipt.price }}');">{{ receipt.price }}</button></td>
+                </tr>
+              {% endfor %}
+
+
+              </tbody>
+
+            </table>
+        </div><!-- div class="card-body " -->
+    </div> <!--  div class="card" -->
+    </div><!-- div class="col" -->
+    </div><!-- div class="row" -->
+</div><!-- div class="container-fluid" -->
+
+{% endblock %}
+
+

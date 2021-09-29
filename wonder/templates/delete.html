@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+
+
+{% block container %}
+
+    <form action="" method="post">
+    {% csrf_token %}
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm">
+                    <label>{{ form.xdate.label }}</label>
+                    {{ form.xdate }}
+                </div>
+                <div class="col-sm">
+                    <label>{{ form.note.label }}</label>
+                    {{ form.note }}
+                </div>
+                <div class="col-sm">
+                    <label>{{ form.source.label }}</label>
+                    {{ form.source }}
+                </div>
+                <div class="col-sm">
+                    <label>{{ form.xrange.label }}</label>
+                    {{ form.xrange }}
+                </div>
+            </div>
+{#            <div class="row"></div>#}
+            <br>
+            <div class="row">
+                <div class="col-sm">
+                    <input type="submit" class="btn btn-outline-danger" value="刪除">
+                </div>
+            </div>
+        </div>
+    </form>
+
+{% endblock %}
+
+

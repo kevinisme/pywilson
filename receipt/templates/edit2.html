@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+
+
+{% block container %}
+
+    <form action="" method="post">
+    {% csrf_token %}
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm">
+                    <label>{{ form.ydate.label }}</label>
+                    {{ form.ydate }}
+                </div>
+                <div class="col-sm">
+                    <label>{{ form.itemname.label }}</label>
+                    {{ form.itemname }}
+                </div>
+                <div class="col-sm">
+                    <label>{{ form.code.label }}</label>
+                    {{ form.code }}
+                </div>
+                <div class="col-sm">
+                    <label>{{ form.shop.label }}</label>
+                    {{ form.shop }}
+                </div>
+                <div class="col-sm">
+                    <label>{{ form.price.label }}</label>
+                    {{ form.price }}
+                </div>
+            </div>
+{#            <div class="row"></div>#}
+            <br>
+            <div class="row">
+                <div class="col-sm">
+                    <input type="submit" class="btn btn-outline-danger" value="確認修改">
+                </div>
+            </div>
+        </div>
+    </form>
+
+{% endblock %}
+
+

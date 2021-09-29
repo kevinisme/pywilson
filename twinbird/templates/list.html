@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+
+
+
+{% block container %}
+
+
+
+
+<div class="container-fluid">
+    <div class="row">
+    <div class="col-sm-12">
+    <div class="card">
+        <div class="card-header card-secondary">評估列表</div>
+        <div class="card-body ">
+            <table class="table table-bordered table-hover table-striped" cellspacing="0" width="100%">
+              <thead class="table-dark">
+                <tr>
+                  <td>評估日期</td>
+                  <td>項目名稱</td>
+                  <td>要求來源</td>
+                  <td>價錢區間</td>
+                  <td>-解散-</td>
+
+                  <td>收據日期</td>
+                  <td>項目名稱</td>
+                  <td>收據號碼</td>
+                  <td>店家名稱</td>
+                  <td>價錢</td>
+
+                </tr>
+
+
+              </thead>
+              <tbody>
+              {% for tbird in twinbird_list %}
+                <tr>
+                  <td width="20%">
+                          {{ tbird.wonder.xdate|date:"Y-m-d" }}</td>
+                  <td>{{ tbird.wonder.note }}</td>
+                  <td>{{ tbird.wonder.source }}</td>
+                  <td>{{ tbird.wonder.xrange }}</td>
+
+                  <td><a href="{% url 'twinbird:dismiss' tbird.id %}" class="btn btn-primary btn-sm">解散</a> </td>
+
+                  <td>-----</td>
+                  <td>-----</td>
+                  <td>-----</td>
+                  <td>-----</td>
+                  <td>-----</td>
+                </tr>
+
+
+              {% for receipt in tbird.receipt_set.all %}
+                <tr>
+                  <td>-----</td>
+                  <td>-----</td>
+                  <td>-----</td>
+                  <td>-----</td>
+                  <td>-----</td>
+
+                  <td width="15%">{{ receipt.ydate|date:"Y-m-d" }}</td>
+                  <td>{{ receipt.itemname }}</td>
+                  <td>{{ receipt.code }}</td>
+                  <td>{{ receipt.shop }}</td>
+                  <td>{{ receipt.price }}</td>
+                </tr>
+
+              {% endfor %}
+
+              {% endfor %}{# for tbird in twinbird_list #}
+
+
+              </tbody>
+
+            </table>
+        </div><!-- div class="card-body " -->
+    </div> <!--  div class="card" -->
+    </div><!-- div class="col" -->
+
+    </div><!-- div class="row" -->
+</div><!-- div class="container-fluid" -->
+
+{% endblock %}
+
+

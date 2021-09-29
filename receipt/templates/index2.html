@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+
+
+{% block container %}
+    <a href="{% url 'receipt:new' %}" class="btn btn-warning" >新增收據</a>
+
+    <div class="card">
+        <div class="card-header card-secondary">列表</div>
+        <div class="card-body ">
+            <table class="table table-bordered table-hover table-striped">
+              <thead class="table-dark">
+                <tr>
+                  <td>收據日期</td>
+                  <td>項目名稱</td>
+                  <td>收據號碼</td>
+                  <td>店家名稱</td>
+                  <td>價錢</td>
+                  <td>修改/刪除</td>
+                </tr>
+
+
+              </thead>
+              <tbody>
+              {% for receipt in receipt_list %}
+                <tr>
+                  <td>{{ receipt.ydate|date:"Y-m-d D" }}</td>
+                  <td>{{ receipt.itemname }}</td>
+                  <td>{{ receipt.code }}</td>
+                  <td>{{ receipt.shop }}</td>
+                  <td>{{ receipt.price }}</td>
+                  <td>
+                      <a href="{% url 'receipt:edit' receipt.id %}" class="btn btn-primary btn-sm">修改紀錄</a>
+                      <a href="{% url 'receipt:delete' receipt.id %}" class="btn btn-danger btn-sm">刪除紀錄</a>
+                  </td>
+                </tr>
+              {% endfor %}
+
+
+              </tbody>
+
+            </table>
+        </div>
+    </div>
+{% endblock %}
